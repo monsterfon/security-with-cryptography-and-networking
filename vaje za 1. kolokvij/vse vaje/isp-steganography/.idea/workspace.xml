@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c9bac230-5f21-424c-be4d-bf721cc05b19" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/isp/rsa/AgentCommunicationRSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isp/rsa/AgentCommunicationRSA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isp/rsa/RSAExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isp/rsa/RSAExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isp/steganography/ImageSteganography.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isp/steganography/ImageSteganography.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1TpsovV87EY6Dos3pLBJHsXrcQu" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../isp-keyagreement" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ImageSteganography">
+    <configuration name="AgentCommunicationRSA" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="isp.rsa.AgentCommunicationRSA" />
+      <module name="isp-steganography" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="isp.rsa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ImageSteganography" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="isp.steganography.ImageSteganography" />
+      <module name="isp-steganography" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="isp.steganography.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RSAExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="isp.rsa.RSAExample" />
+      <module name="isp-steganography" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="isp.rsa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ImageSteganography" />
+        <item itemvalue="Application.AgentCommunicationRSA" />
+        <item itemvalue="Application.RSAExample" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c9bac230-5f21-424c-be4d-bf721cc05b19" name="Default Changelist" comment="" />
+      <created>1574168549626</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574168549626</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

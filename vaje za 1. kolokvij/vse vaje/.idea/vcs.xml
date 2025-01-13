@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/KOLOKVIJ___isp_1.1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/v1___isp-secrecy/isp-secrecy/isp-secrecy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/v2___isp-integrity/isp-integrity" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/v3___isp-ae-pke/isp-ae-pke" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/v4___isp-keyagreement" vcs="Git" />
+  </component>
+</project>

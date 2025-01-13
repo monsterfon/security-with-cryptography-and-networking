@@ -1,0 +1,17 @@
+
+
+
+Question 1. Switch back to the ssh-client and make sure that the displayed fingerprint is correct. Obviously, the authentication should fail if fingerprints mismatch. If that were the case, what kind of an attack could be taking place?
+Switch to ssh-client and input yes, if the displayed fingerprint matches the actual one. Finally, provide the password (ssh-client) and you should be logged in. Observe how the terminal input line changed from isp@isp to isp@ssh-server when you connected: this let's you know that your terminal is now connected to the ssh-server. Log-out by either inputting exit, logout, or by pressing ctrl+d.
+Now let's change the SSH keypairs on the ssh-server:
+sudo ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
+sudo ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+sudo ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+sudo ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
+On ssh-client, reconnect to the ssh-server. You should get an flashy warning. What does it mean?
+On ssh-client, remove the saved fingerprints from ~/.ssh/known_hosts by running the command that the SSH client suggests and reconnect to the server.
+Did you remember to authenticate the server's fingerprint or you simply input yes when asked?
+
+Question 2. Open another terminal on the ssh-server and observe Apache access log as you request pages on the isp machine with curl localhost:8080. You can see the real-time access log by running tail -f /var/log/apache2/access.log.
+
+What is the IP address of the client that is issuing the HTTP requests? Why? (Press ctrl+c to exit the tail program.)

@@ -1,0 +1,189 @@
+we create VMs:
+
+gateway: adapter 1 - bridged, adapter 2 - internal (midterm) 
+radius: adapter 1 - internal (midterm)
+road warrior: adapter 1 - bridged
+
+we install the necessary packages:
+
+gateway: sudo apt install strongswan strongswan-pki libcharon-extra-plugins apache2 wireshark net-tools
+radius: sudo apt install freeradius freeradius-utils apache2 libapache2-mod-auth-radius wireshark
+Road warrior: sudo apt install strongswan strongswan-pki libcharon-extra-plugins apache2 wireshark net-tools
+
+we disable ipv6:
+
+we add 
+
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+
+into /etc/sysctl.conf and run sudo sysctl -p (check using cat /proc/sys/net/ipv6/conf/all/disable_ipv6)
+
+1. Gateway network
+
+We open /etc/netplan/01-network-manager-all.yaml and add
+
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: true
+      dhcp-identifier: mac
+    enp0s8:
+      addresses: [172.16.0.1/24]
+
+where 172.16.0.1/24 is our private network ip
+
+
+run sudo netplan apply
+enable ip forwarding: echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
+enable NAT masquarade: sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+
+2. radius:
+
+we configure /etc/netplan/01-network-manager-all.yaml
+
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      addresses: [172.16.0.2/24]
+      gateway4: 172.16.0.1  # Gateway's private IP
+	  
+we run sudo netplan apply
+
+we configure the radius clinet in /etc/radius/3.0/clients.conf:
+
+client gateway {
+        ipaddr = 172.16.0.1
+        secret = radiuspassword
+        require_message_authenticator = no
+        nas_type = other
+}
+
+we open  /etc/freeradius/3.0/users and add alice:
+
+"alice" Cleartext-Password := "alice"
+
+we run sudo systemctl restart freeradius
+
+
+3. FIREWALL
+
+we download handson-tables
+we add the following rules into handson-tables:
+
+# Allow established and related connections
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# Allow all routed traffic
+iptables -A FORWARD -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+
+# Incoming rules for Internet interface
+iptables -A INPUT -p icmp -m state --state NEW -j ACCEPT       # ICMP
+iptables -A INPUT -p udp --dport 500 -m state --state NEW -j ACCEPT  # ISAKMP
+iptables -A INPUT -p esp -m state --state NEW -j ACCEPT        # IPsec ESP
+iptables -A INPUT -p udp --dport 4500 -m state --state NEW -j ACCEPT # NAT-T
+
+# Outgoing rules for Internet interface
+iptables -A OUTPUT -p icmp -m state --state NEW -j ACCEPT      # ICMP
+iptables -A OUTPUT -p udp --dport 53 -m state --state NEW -j ACCEPT  # DNS
+
+# Add masquerade rule
+iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+
+we check using 
+
+echo "=== Checking all iptables rules ==="
+sudo iptables -L -v -n
+
+echo -e "\n=== Checking NAT rules ==="
+sudo iptables -t nat -L -v -n
+
+echo -e "\n=== Testing outgoing ping (should work) ==="
+ping -c 4 8.8.8.8
+
+echo -e "\n=== Testing DNS resolution (should work) ==="
+dig google.com +short
+
+echo -e "\n=== Testing ISAKMP port (500) ==="
+nc -uvz 127.0.0.1 500
+
+echo -e "\n=== Testing NAT-T port (4500) ==="
+nc -uvz 127.0.0.1 4500
+
+echo -e "\n=== Testing forwarding (from RADIUS) ==="
+# Run this from RADIUS machine (172.16.0.2):
+ping -c 4 8.8.8.8
+
+echo -e "\n=== Watching firewall logs (Ctrl+C to stop) ==="
+sudo tail -f /var/log/kern.log
+
+4. Gateway VPN
+we edit /etc/ipsec.conf:
+
+
+config setup
+
+conn %default
+    ikelifetime=60m
+    keylife=20m
+    rekeymargin=3m
+    keyingtries=1
+    keyexchange=ikev2
+    authby=secret
+
+conn VPN
+    leftsubnet=172.16.0.0/24
+    leftfirewall=yes
+    leftid=gw
+    right=%any
+    rightsourceip=172.16.1.0/24
+    auto=add
+
+and add psk into /etc/ipsec.secrets
+
+@gw : PSK "mypsk"
+
+restart sudo ipsec restart
+
+5. Road warrior
+
+we configure /etc/netplan/01-network-manager-all.yaml
+
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: true
+      dhcp-identifier: mac
+	  
+and save using sudo netplan apply
+
+we edit /etc/ipsec.conf:
+
+config setup
+
+conn %default
+    ikelifetime=60m
+    keylife=20m
+    rekeymargin=3m
+    keyingtries=1
+    keyexchange=ikev2
+    authby=secret
+
+conn VPN
+    leftid=alice
+    left=%defaultroute
+    leftfirewall=yes
+    leftsourceip=%config       
+    right=192.168.1.38
+    rightid=gw
+    rightsubnet=172.16.0.0/24,172.16.1.0/24
+    auto=add
+	
+and add psk into /etc/ipsec.secrets
+
+@gw : PSK "mypsk"

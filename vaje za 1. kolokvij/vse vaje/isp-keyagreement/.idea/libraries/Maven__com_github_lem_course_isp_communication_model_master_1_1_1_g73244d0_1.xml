@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.github.lem-course:isp-communication-model:master-1.1.1-g73244d0-1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/lem-course/isp-communication-model/master-1.1.1-g73244d0-1/isp-communication-model-master-1.1.1-g73244d0-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/lem-course/isp-communication-model/master-1.1.1-g73244d0-1/isp-communication-model-master-1.1.1-g73244d0-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/lem-course/isp-communication-model/master-1.1.1-g73244d0-1/isp-communication-model-master-1.1.1-g73244d0-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

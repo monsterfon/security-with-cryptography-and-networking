@@ -1,0 +1,42 @@
+Question 1:
+
+Zakaj sta dva SPI-ja?
+
+Obstajata dva indeksa varnostnih parametrov (SPI), ker IPsec vzpostavi ločene varnostne povezave (SA) za dohodni in odhodni promet. Vsaka SA je enosmerna, kar pomeni, da obravnava bodisi dohodni bodisi odhodni promet. Zato se en SPI uporablja za dohodno SA in drugi za odhodno SA. To omogoča IPsec-u, da uporablja različne varnostne parametre za vsako smer komunikacije.
+
+Katero šifriranje se uporablja?
+
+IKE proposal: AES_GCM_16_256/PRF_HMAC_SHA2_256/MODP_2048
+ESP proposal: AES_GCM_16_25
+
+
+
+
+
+Question 2:
+
+hq_server in branch_client ne moreta dostopati do interneta, ker usmerjevalniki ne izvajajo prevajanja omrežnih naslovov (NAT) za notranja omrežja. Brez NAT notranji IP naslovi niso usmerljivi na internetu. Da to popravite, omogočite NAT na obeh usmerjevalnikih z dodajanjem naslednjega pravila iptables:
+
+
+sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+
+
+Ta ukaz omogoča IP maskiranje na zunanjem vmesniku enp0s3, kar omogoča notranjim gostiteljem dostop do interneta.
+
+
+
+
+
+
+
+
+Question 3:
+
+Zagon mtr 10.2.0.2 na hq_server prikaže omrežno pot do branch_client. Ker VPN tunel neposredno povezuje omrežja, izhod prikazuje minimalno število skokov:
+
+1. hq_server
+2. hq_router
+3. branch_router
+4. branch_client
+
+Če bi bila hq_router in branch_router 10 skokov narazen, bi izhod mtr vključeval dodatne vmesne usmerjevalnike med njima, kar bi pokazalo skupno približno 13 skokov. To bi odražalo dejansko omrežno pot skozi več usmerjevalnikov, kar bi lahko povečalo zakasnitev in vplivalo na omrežno zmogljivost.

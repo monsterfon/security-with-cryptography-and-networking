@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bddbde0d-d6f8-4d1f-8972-5ad5047ccad8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/isp/secrecy/AgentCommunicationSymmetricCipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isp/secrecy/AgentCommunicationSymmetricCipher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/isp/secrecy/SymmetricCipherExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/isp/secrecy/SymmetricCipherExample.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1SWYP7aVjEE2R5vrB5UVVjpRp8q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../isp-integrity" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.AgentCommunicationSymmetricCipher">
+    <configuration name="ActiveMITM" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="isp.secrecy.ActiveMITM" />
+      <module name="isp-secrecy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="isp.secrecy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AgentCommunication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="isp.secrecy.AgentCommunication" />
+      <module name="isp-secrecy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="isp.secrecy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AgentCommunicationSymmetricCipher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="isp.secrecy.AgentCommunicationSymmetricCipher" />
+      <module name="isp-secrecy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="isp.secrecy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SymmetricCipherExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="isp.secrecy.SymmetricCipherExample" />
+      <module name="isp-secrecy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="isp.secrecy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AgentCommunicationSymmetricCipher" />
+        <item itemvalue="Application.SymmetricCipherExample" />
+        <item itemvalue="Application.ActiveMITM" />
+        <item itemvalue="Application.AgentCommunication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bddbde0d-d6f8-4d1f-8972-5ad5047ccad8" name="Default Changelist" comment="" />
+      <created>1571680792135</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571680792135</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

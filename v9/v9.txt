@@ -1,0 +1,93 @@
+Question 1: Which AVPs are sent from the Apache to the Radius server when Alice tries to log in?
+To answer this, use Wireshark with the radius filter to observe messages sent during Alice’s login attempt.
+
+
+Key ALICE AVPs include:
+
+[ine response to this request is in Trame /]
+- Attribute Value Pairs
+- AVP: t=User-Name(1) l=7 val=alice
+
+User-Name: alice
+- AVP: t=User-Password(2) l=18 val=Encrypted
+
+User-Password (encrypted): 7ea51502dad33fae2ee5460433c2d5d3
+- AVP: t=Service-Type(6) l=6 val=Authenticate-Only(8)
+
+Service-Type: Authenticate-Only (8)
+AVP: t=NAS-Identifier(32) l=11 val=127.0.1.1
+
+NAS-Identifier: 127.0.1.1
+- AVP: t=NAS-IP-Address(4) l=6 val=127.0.0.1
+
+NAS-IP-Address: 127.0.0.1
+
+
+
+
+
+
+
+Question 2: Which additional AVPs are added when the Access-Request is proxied to radius2?
+When the local RADIUS server proxies the request to radius2, additional AVPs are added, such as:
+
+Proxy-State: Keeps track of the state of the request between the proxy and the home server.
+Realm: Indicates the realm/domain (e.g., domain.com).
+These AVPs allow the proxy server to route the request correctly and track its progress.
+
+
+Key BOB AVPs include:
+
+Attribute Value Pairs
+AVP: t=User-Name(1) l=16 val=bob@domain.com
+
+User-Name: bob@domain.com
+AVP: t=User-Password(2) l=18 val=Encrypted
+
+User-Password (encrypted): a56dc3d4cfaf06d5c74403c4490884e1
+- AVP: t=Service-Type(6) 1=6 val=Authenticate-Only(8)
+
+Service-Type: Authenticate-Only (8)
+AVP: t=NAS-Identifier(32) 1=11 val=127.0.1.1
+
+NAS-Identifier: 127.0.1.1
+- AVP: t=NAS-IP-Address(4) l=6 val=127.0.0.1
+
+NAS-IP-Address: 127.0.0.1
+These AVPs are part of the Access-Request message and allow the RADIUS server to authenticate the user.
+
+
+
+
+
+Question 3: What would you need to do if you wanted radius2 to also cover users from domain example.org?
+On radius1:
+
+
+Add a new realm in /etc/freeradius/3.0/proxy.conf for example.org:
+
+
+realm example.org {
+    pool = pool_example_org
+    nostrip
+}
+
+Define the home server and pool for example.org
+
+realm example.org {
+}
+
+Update clients.conf to allow radius1 as a client:
+
+client $RADIUS1_IP {
+    secret = testing123
+}
+
+Add user credentials for example.org in the /etc/freeradius/3.0/users file on radius2.
+This ensures radius2 can authenticate users from the new domain.
+
+
+
+
+
+
